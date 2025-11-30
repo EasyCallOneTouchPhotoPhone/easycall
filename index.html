@@ -21,7 +21,7 @@
         /* Navegación de idiomas */
         .language-nav {
             background: #f8f9fa;
-            padding: 10px 0;
+            padding: 15px 0;
             border-bottom: 1px solid #e0e0e0;
         }
 
@@ -31,29 +31,36 @@
             padding: 0 20px;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
             flex-wrap: wrap;
         }
 
         .language-nav a {
             color: #666;
             text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 4px;
+            padding: 10px 20px;
+            border-radius: 8px;
             transition: all 0.3s;
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 1.1em;
+            font-size: 1.2em;
+            font-weight: 500;
         }
 
         .language-nav a:hover {
             background: #e0e0e0;
+            transform: translateY(-2px);
         }
 
         .language-nav a.active {
             background: #2196F3;
             color: white;
+            box-shadow: 0 4px 10px rgba(33, 150, 243, 0.3);
+        }
+
+        .flag {
+            font-size: 1.5em;
         }
 
         /* Hero Section */
@@ -174,14 +181,24 @@
         }
 
         .why-content {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
+        .why-story {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .why-text {
+            flex: 1;
+        }
+
         .why-image {
-            max-width: 400px;
-            margin: 40px auto;
-            display: block;
+            width: 350px;
+            flex-shrink: 0;
             border-radius: 15px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
@@ -209,6 +226,12 @@
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             margin-bottom: 20px;
+        }
+
+        .feature-item .emoji-icon {
+            font-size: 5em;
+            margin-bottom: 20px;
+            display: block;
         }
 
         .feature-item h3 {
@@ -361,12 +384,18 @@
             }
 
             .language-nav a {
-                font-size: 0.9em;
-                padding: 6px 10px;
+                font-size: 1em;
+                padding: 8px 12px;
+            }
+
+            .why-story {
+                flex-direction: column;
             }
 
             .why-image {
-                max-width: 100%;
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
             }
         }
     </style>
@@ -375,13 +404,13 @@
     <!-- Navegación de idiomas -->
     <nav class="language-nav">
         <div class="container">
-            <a href="index.html" class="active">🇪🇸 Español</a>
-            <a href="en/index.html">🇬🇧 English</a>
-            <a href="pt/index.html">🇵🇹 Português</a>
-            <a href="de/index.html">🇩🇪 Deutsch</a>
-            <a href="fr/index.html">🇫🇷 Français</a>
-            <a href="zh/index.html">🇨🇳 中文</a>
-            <a href="ja/index.html">🇯🇵 日本語</a>
+            <a href="index.html" class="active"><span class="flag">🇪🇸</span> Español</a>
+            <a href="en/index.html"><span class="flag">🇬🇧</span> English</a>
+            <a href="pt/index.html"><span class="flag">🇵🇹</span> Português</a>
+            <a href="de/index.html"><span class="flag">🇩🇪</span> Deutsch</a>
+            <a href="fr/index.html"><span class="flag">🇫🇷</span> Français</a>
+            <a href="zh/index.html"><span class="flag">🇨🇳</span> 中文</a>
+            <a href="ja/index.html"><span class="flag">🇯🇵</span> 日本語</a>
         </div>
     </nav>
 
@@ -424,17 +453,22 @@
         <div class="container">
             <h2>💡 Por qué nació EasyCall</h2>
             <div class="why-content">
+                <div class="why-story">
+                    <div class="why-text">
+                        <p>
+                            EasyCall nació de una necesidad real y personal. Mi suegra, con 90 años cumplidos, tiene un principio de demencia senil que le está afectando a la motricidad fina. Esto le impide utilizar un smartphone con normalidad: las pantallas táctiles le resultan demasiado pequeñas, los menús demasiado complicados y los gestos demasiado precisos.
+                        </p>
+                        <p>
+                            Probamos teléfonos especiales para personas mayores, pero ni siquiera esos conseguían adaptarse a sus necesidades.
+                        </p>
+                        <p>
+                            Por eso decidí desarrollar EasyCall: una aplicación diseñada específicamente para que personas con dificultades motoras o cognitivas puedan llamar a sus seres queridos con un solo toque.
+                        </p>
+                    </div>
+                    <img src="images/El_porqué_de_EasyCall.png" alt="Persona mayor usando el móvil" class="why-image">
+                </div>
                 <p>
-                    EasyCall nació de una necesidad real y personal. Mi suegra, con 90 años cumplidos, tiene un principio de demencia senil que le está afectando a la motricidad fina. Esto le impide utilizar un smartphone con normalidad: las pantallas táctiles le resultan demasiado pequeñas, los menús demasiado complicados y los gestos demasiado precisos.
-                </p>
-                <p>
-                    Probamos teléfonos especiales para personas mayores, pero ni siquiera esos conseguían adaptarse a sus necesidades.
-                </p>
-                
-                <img src="images/El_porqué_de_EasyCall.png" alt="Persona mayor usando el móvil" class="why-image">
-                
-                <p>
-                    Por eso decidí desarrollar EasyCall: una aplicación diseñada específicamente para que personas con dificultades motoras o cognitivas puedan llamar a sus seres queridos con un solo toque. Ahora está muy contenta porque ha recuperado la autonomía de poder llamar a sus personas queridas cuando quiera.
+                    Ahora está muy contenta porque ha recuperado la autonomía de poder llamar a sus personas queridas cuando quiera.
                 </p>
                 <p>
                     Aunque desarrollé la aplicación pensando en ella, yo mismo la uso a diario. A pesar de no tener ningún problema para manejar un smartphone, EasyCall me resulta más rápido, sencillo y efectivo para llamar a mis contactos habituales que buscarlos en la agenda o marcarlos como favoritos.
@@ -465,7 +499,7 @@
                 </div>
 
                 <div class="feature-item">
-                    <img src="images/logo.png" alt="Manos libres automático">
+                    <span class="emoji-icon">🔊</span>
                     <h3>Manos libres automático</h3>
                     <p>El altavoz se activa automáticamente al llamar, ideal para personas con movilidad reducida.</p>
                 </div>
