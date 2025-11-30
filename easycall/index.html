@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EasyCall - Llamadas telefónicas fáciles con fotos grandes. Ideal para personas mayores, demencia y Alzheimer.">
+    <title>EasyCall - OneTouch Photo Phone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navegación de idiomas */
+        .language-nav {
+            background: #f8f9fa;
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .language-nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .language-nav a {
+            color: #666;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.1em;
+        }
+
+        .language-nav a:hover {
+            background: #e0e0e0;
+        }
+
+        .language-nav a.active {
+            background: #2196F3;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #8BC34A 0%, #689F38 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-logo {
+            width: 200px;
+            height: 200px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-tagline {
+            font-size: 1.5em;
+            font-weight: 300;
+            margin-bottom: 30px;
+            max-width: 800px;
+        }
+
+        .features-list {
+            list-style: none;
+            text-align: left;
+            display: inline-block;
+            margin: 30px 0;
+        }
+
+        .features-list li {
+            padding: 10px 0;
+            font-size: 1.1em;
+        }
+
+        .features-list li:before {
+            content: "✓ ";
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #2196F3;
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background: #1976D2;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .cta-button.disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .cta-button.disabled:hover {
+            transform: none;
+            background: #ccc;
+        }
+
+        /* Secciones generales */
+        section {
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2.2em;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        section p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        /* Sección Por qué nació */
+        .why-section {
+            background: #f8f9fa;
+        }
+
+        .why-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .why-image {
+            max-width: 400px;
+            margin: 40px auto;
+            display: block;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        /* Sección Características */
+        .features-section {
+            background: white;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .feature-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .feature-item h3 {
+            color: #2196F3;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        /* Sección Configuración */
+        .config-section {
+            background: #f8f9fa;
+        }
+
+        .config-steps {
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+        .config-step {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            align-items: center;
+        }
+
+        .config-step img {
+            max-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .config-step-content {
+            flex: 1;
+        }
+
+        .config-step h3 {
+            color: #2196F3;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .other-features {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .other-features h3 {
+            color: #2196F3;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+        }
+
+        .other-features p {
+            margin-bottom: 15px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: white;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 20px;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2196F3;
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #8BC34A;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8em;
+            }
+
+            .hero-tagline {
+                font-size: 1.2em;
+            }
+
+            .hero-logo {
+                width: 150px;
+                height: 150px;
+            }
+
+            section {
+                padding: 50px 20px;
+            }
+
+            section h2 {
+                font-size: 1.8em;
+            }
+
+            .config-step {
+                flex-direction: column;
+            }
+
+            .config-step img {
+                max-width: 100%;
+            }
+
+            .language-nav .container {
+                gap: 10px;
+            }
+
+            .language-nav a {
+                font-size: 0.9em;
+                padding: 6px 10px;
+            }
+
+            .why-image {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegación de idiomas -->
+    <nav class="language-nav">
+        <div class="container">
+            <a href="index.html" class="active">🇪🇸 Español</a>
+            <a href="en/index.html">🇬🇧 English</a>
+            <a href="pt/index.html">🇵🇹 Português</a>
+            <a href="de/index.html">🇩🇪 Deutsch</a>
+            <a href="fr/index.html">🇫🇷 Français</a>
+            <a href="zh/index.html">🇨🇳 中文</a>
+            <a href="ja/index.html">🇯🇵 日本語</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <img src="images/logo.png" alt="EasyCall Logo" class="hero-logo">
+                <div>
+                    <h1>EasyCall - OneTouch Photo Phone</h1>
+                    <p class="hero-tagline">
+                        <strong>EasyCall convierte cualquier smartphone en un dispositivo accesible</strong>
+                    </p>
+                    <p style="font-size: 1.2em; margin-bottom: 20px;">
+                        Llamadas telefónicas fáciles con fotos grandes. Ideal para personas mayores.
+                    </p>
+                    
+                    <ul class="features-list">
+                        <li>Pantalla con fotos grandes de tus contactos</li>
+                        <li>Un solo toque para llamar</li>
+                        <li>Sin menús complicados ni distracciones</li>
+                        <li>Activación automática del altavoz (manos libres)</li>
+                        <li>Pantalla siempre encendida</li>
+                        <li>Acceso protegido a la configuración</li>
+                    </ul>
+
+                    <a href="#" class="cta-button disabled" title="Próximamente en Google Play Store">
+                        📱 Descargar en Google Play
+                    </a>
+                    <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.8;">
+                        Próximamente disponible
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Por qué nació EasyCall -->
+    <section class="why-section">
+        <div class="container">
+            <h2>💡 Por qué nació EasyCall</h2>
+            <div class="why-content">
+                <p>
+                    EasyCall nació de una necesidad real y personal. Mi suegra, con 90 años cumplidos, tiene un principio de demencia senil que le está afectando a la motricidad fina. Esto le impide utilizar un smartphone con normalidad: las pantallas táctiles le resultan demasiado pequeñas, los menús demasiado complicados y los gestos demasiado precisos.
+                </p>
+                <p>
+                    Probamos teléfonos especiales para personas mayores, pero ni siquiera esos conseguían adaptarse a sus necesidades.
+                </p>
+                
+                <img src="images/El_porqué_de_EasyCall.png" alt="Persona mayor usando el móvil" class="why-image">
+                
+                <p>
+                    Por eso decidí desarrollar EasyCall: una aplicación diseñada específicamente para que personas con dificultades motoras o cognitivas puedan llamar a sus seres queridos con un solo toque. Ahora está muy contenta porque ha recuperado la autonomía de poder llamar a sus personas queridas cuando quiera.
+                </p>
+                <p>
+                    Aunque desarrollé la aplicación pensando en ella, yo mismo la uso a diario. A pesar de no tener ningún problema para manejar un smartphone, EasyCall me resulta más rápido, sencillo y efectivo para llamar a mis contactos habituales que buscarlos en la agenda o marcarlos como favoritos.
+                </p>
+                <p style="text-align: center; font-size: 1.3em; font-weight: 600; color: #2196F3; margin-top: 30px;">
+                    Un toque y llamo. Así de simple.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Características y Funciones -->
+    <section class="features-section">
+        <div class="container">
+            <h2>✅ Características Principales</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <img src="images/screenshot-main.png" alt="Pantalla principal con fotos grandes">
+                    <h3>Fotos grandes y claras</h3>
+                    <p>Contactos con fotos grandes y botones fáciles de tocar. Perfecto para personas con dificultades visuales o motoras.</p>
+                </div>
+
+                <div class="feature-item">
+                    <img src="images/screenshot-config.png" alt="Configuración sencilla">
+                    <h3>Fácil configuración</h3>
+                    <p>Un familiar o cuidador puede configurar los contactos fácilmente. El usuario solo verá las fotos de sus seres queridos.</p>
+                </div>
+
+                <div class="feature-item">
+                    <img src="images/logo.png" alt="Manos libres automático">
+                    <h3>Manos libres automático</h3>
+                    <p>El altavoz se activa automáticamente al llamar, ideal para personas con movilidad reducida.</p>
+                </div>
+            </div>
+
+            <div style="max-width: 800px; margin: 60px auto 0; text-align: center;">
+                <h3 style="color: #2196F3; margin-bottom: 20px; font-size: 1.5em;">Ideal para:</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: left;">
+                    <div>
+                        <p style="font-size: 1.1em;">👵 Personas mayores</p>
+                        <p style="font-size: 1.1em;">🧠 Personas con demencia o Alzheimer</p>
+                    </div>
+                    <div>
+                        <p style="font-size: 1.1em;">🤲 Personas con dificultades motoras</p>
+                        <p style="font-size: 1.1em;">✨ Cualquier persona que busque simplicidad</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cómo configurar -->
+    <section class="config-section">
+        <div class="container">
+            <h2>⚙️ Cómo configurar EasyCall</h2>
+            
+            <div class="config-steps">
+                <div class="config-step">
+                    <img src="images/screenshot-contacts.png" alt="Paso 1">
+                    <div class="config-step-content">
+                        <h3>1. Guarda en tus contactos los que quieras ver en EasyCall</h3>
+                        <p>Utilizando la aplicación de contactos del móvil guarda en tu agenda de contactos los que quieras seleccionar en EasyCall, y preferentemente guarda en el contacto la foto que quieras que se muestre de ese contacto.</p>
+                    </div>
+                </div>
+
+                <div class="config-step">
+                    <img src="images/screenshot-configbutton.png" alt="Paso 2">
+                    <div class="config-step-content">
+                        <h3>2. Accede a la configuración</h3>
+                        <p>Abre EasyCall y pulsa el icono de la llave de configuración 🔧</p>
+                    </div>
+                </div>
+
+                <div class="config-step">
+                    <img src="images/screenshot-config-grid.png" alt="Paso 3">
+                    <div class="config-step-content">
+                        <h3>3. Configura la pantalla</h3>
+                        <p>Selecciona el número de fotos en horizontal (2-8) y en vertical (1-4). Adapta la visualización a las necesidades del usuario. La disposición de las fotos en la pantalla se adaptará al número de contactos seleccionados, pero como máximo, en cada pantalla, se presentará el número de fotos en horizontal y en vertical que se haya seleccionado.</p>
+                    </div>
+                </div>
+
+                <div class="config-step">
+                    <img src="images/screenshot-contacts-list.png" alt="Paso 4">
+                    <div class="config-step-content">
+                        <h3>4. Añade contactos</h3>
+                        <p>Pulsa "Añadir contacto" y selecciona los contactos de tu agenda. EasyCall utilizará la foto del contacto y su primer número de teléfono. Al terminar de configurar, guarda la configuración, y volverás a la página principal de EasyCall.</p>
+                    </div>
+                </div>
+
+                <div style="background: white; padding: 30px; border-radius: 10px; margin-top: 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <h3 style="color: #2196F3; margin-bottom: 15px;">📱 Modo Teléfono Fijo (Launcher)</h3>
+                    <p>
+                        EasyCall puede configurarse como launcher (aplicación de inicio) del teléfono. Además, la pantalla permanece siempre encendida mientras la aplicación está abierta.
+                    </p>
+                    <p>
+                        Esto permite dejar el teléfono enchufado permanentemente sobre una mesa, con la pantalla activa y listo para llamar en cualquier momento con un solo toque, <strong>como si fuera un teléfono fijo</strong>.
+                    </p>
+                </div>
+
+                <div class="other-features">
+                    <h3>Otras funcionalidades:</h3>
+                    <p>
+                        Una vez que estén configurados algunos contactos, el icono de acceso a la configuración, una llave inglesa, se presentará en la esquina superior izquierda de la pantalla. Pero en la pantalla de configuración se puede desactivar la presentación de este icono. En realidad la funcionalidad de acceso a la configuración sigue en el mismo sitio pero no es visible y para acceder hay que hacer una pulsación de más de 2 segundos en la esquina superior izquierda.
+                    </p>
+                    <p>
+                        En algunos modelos de móvil, para que se active automáticamente la funcionalidad de manos libres será necesario dar Permitir Ajustes Restringidos a la aplicación EasyCall. Se configura en Ajustes/Aplicaciones/EasyCall, pero esto puede variar según cada modelo de smartphone.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>❓ Preguntas Frecuentes</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">¿En qué dispositivos funciona EasyCall?</div>
+                    <div class="faq-answer">
+                        EasyCall funciona en cualquier smartphone o tablet Android. La aplicación se adapta automáticamente al tamaño de pantalla de tu dispositivo.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">¿Puedo usar mis propias fotos de contactos?</div>
+                    <div class="faq-answer">
+                        Sí, EasyCall utiliza las fotos que ya tienes guardadas en tu agenda de contactos. Solo necesitas tener los contactos con foto en la aplicación de contactos de tu teléfono. Pero si seleccionas un contacto sin foto se presentará el nombre del contacto que tienes guardado.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">¿Funciona el manos libres automático en todos los móviles?</div>
+                    <div class="faq-answer">
+                        La función de activación automática del manos libres no funciona en todos los modelos de teléfono, ya que depende de cada fabricante. En algunos casos se soluciona dando permisos de accesibilidad a la aplicación, pero en otros casos el fabricante no permite activar automáticamente el altavoz.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">¿Puedo configurar la app como pantalla de inicio permanente?</div>
+                    <div class="faq-answer">
+                        Sí, EasyCall puede configurarse como launcher (aplicación de inicio) del teléfono. Esto es ideal para convertir el dispositivo en un teléfono fijo digital. Para salir cuando está configurado como launcher, pulsa el botón de apagar del teléfono.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">¿Cuántos contactos puedo añadir?</div>
+                    <div class="faq-answer">
+                        Puedes añadir tantos contactos como necesites. Si seleccionas más contactos de los que caben en una pantalla, se crearán pantallas adicionales automáticamente. Un botón de navegación te permitirá moverte entre ellas.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">¿EasyCall guarda mis datos en algún servidor externo?</div>
+                    <div class="faq-answer">
+                        No. EasyCall no guarda ningún dato de los contactos en sus propios servidores ni en ningún lugar externo. La aplicación únicamente accede a los datos de los contactos que ya tienes guardados en tu propio teléfono. Toda la configuración se almacena localmente en tu dispositivo.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">¿Necesito conocimientos técnicos para configurarla?</div>
+                    <div class="faq-answer">
+                        No. La configuración es muy sencilla e intuitiva. Cualquier familiar o cuidador puede configurar los contactos en pocos minutos. Una vez configurada, el usuario final sólo verá las fotos y podrá llamar con un simple toque.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">¿Puedo desinstalar otras aplicaciones del móvil si uso EasyCall como launcher?</div>
+                    <div class="faq-answer">
+                        Aunque EasyCall puede funcionar como launcher, no restringe el acceso a otras aplicaciones ni es necesario desinstalarlas. Simplemente hará que EasyCall sea la aplicación que se muestre al encender el teléfono o pulsar el botón de inicio.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">¿Qué pasa si una vez configurado cambio los datos o la foto de un contacto?</div>
+                    <div class="faq-answer">
+                        EasyCall mantiene los datos del contacto en el momento en que se guardó en la aplicación. Si quieres cambiar la foto del contacto y los datos del contacto, debes eliminar de la configuración de EasyCall el contacto y volver a añadirlo para que actualice la foto y/o el teléfono.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">¿Qué pasa si una vez configurado un contacto lo borro de mi agenda de contactos?</div>
+                    <div class="faq-answer">
+                        Si borras un contacto de tu agenda, los datos en EasyCall de ese contacto permanecerán. Si quieres eliminarlo también de EasyCall deberás volver a acceder a la configuración de EasyCall para eliminar ese contacto de la aplicación o reemplazarlo por otro.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 EasyCall - OneTouch Photo Phone</p>
+            <div class="footer-links">
+                <a href="privacy.html">Política de Privacidad</a>
+                <a href="mailto:albarmun@gmail.com">📧 Soporte: albarmun@gmail.com</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
