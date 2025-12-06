@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="EasyCall - OneTouch Photo Phone">
+    <meta name="description" content="EasyCall - 大きな写真で簡単に電話。高齢者、認知症、アルツハイマー病の方に最適です。">
     <title>EasyCall - OneTouch Photo Phone</title>
     <style>
         * {
@@ -13,18 +13,14 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Hiragino Sans', 'Yu Gothic', sans-serif;
             line-height: 1.6;
             color: #333;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #8BC34A 0%, #689F38 100%);
         }
 
         .language-nav {
-            background: rgba(255,255,255,0.95);
-            padding: 10px 0;
+            background: #f8f9fa;
+            padding: 15px 0;
             border-bottom: 1px solid #e0e0e0;
         }
 
@@ -34,110 +30,473 @@
             padding: 0 20px;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
             flex-wrap: wrap;
         }
 
         .language-nav a {
             color: #666;
             text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 4px;
+            padding: 10px 20px;
+            border-radius: 8px;
             transition: all 0.3s;
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 1.1em;
+            font-size: 1.2em;
+            font-weight: 500;
         }
 
         .language-nav a:hover {
             background: #e0e0e0;
+            transform: translateY(-2px);
         }
 
         .language-nav a.active {
             background: #2196F3;
             color: white;
+            box-shadow: 0 4px 10px rgba(33, 150, 243, 0.3);
         }
 
-        .main-content {
-            flex: 1;
+        .flag {
+            width: 32px;
+            height: 24px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #8BC34A 0%, #689F38 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-content {
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-title-section {
+            text-align: center;
+            width: 100%;
+        }
+
+        .hero-main {
+            display: flex;
+            gap: 60px;
             align-items: center;
             justify-content: center;
-            padding: 40px 20px;
+            flex-wrap: wrap;
+            width: 100%;
         }
 
-        .content-box {
-            text-align: center;
-            background: white;
-            padding: 60px 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
             max-width: 600px;
+            text-align: left;
         }
 
-        .logo {
-            width: 150px;
-            height: 150px;
+        .hero-image-container {
+            flex-shrink: 0;
+        }
+
+        .hero-photo {
+            width: 400px;
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .hero-logo {
+            width: 200px;
+            height: 200px;
             border-radius: 30px;
-            margin: 0 auto 30px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        h1 {
-            color: #2196F3;
+        .hero h1 {
             font-size: 2.5em;
             margin-bottom: 20px;
+            line-height: 1.2;
+            white-space: nowrap;
         }
 
-        .language-name {
-            color: #666;
-            font-size: 1.3em;
+        .hero-tagline {
+            font-size: 1.5em;
+            font-weight: 300;
             margin-bottom: 30px;
         }
 
-        .coming-soon {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 30px;
+        .features-list {
+            list-style: none;
+            text-align: left;
+            display: inline-block;
+            margin: 30px 0;
         }
 
-        .coming-soon p {
-            color: #666;
+        .features-list li {
+            padding: 10px 0;
             font-size: 1.1em;
-            margin-bottom: 15px;
         }
 
-        .spanish-link {
+        .features-list li:before {
+            content: "✓ ";
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .cta-button {
             display: inline-block;
             background: #2196F3;
             color: white;
-            padding: 12px 30px;
+            padding: 15px 40px;
+            font-size: 1.2em;
             text-decoration: none;
-            border-radius: 25px;
+            border-radius: 50px;
             transition: all 0.3s;
-            font-weight: 600;
-            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-top: 20px;
         }
 
-        .spanish-link:hover {
+        .cta-button:hover {
             background: #1976D2;
             transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .cta-button.disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .cta-button.disabled:hover {
+            transform: none;
+            background: #ccc;
+        }
+
+        section {
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2.2em;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        section p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .why-section {
+            background: #f8f9fa;
+        }
+
+        .why-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .why-story {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .why-text {
+            flex: 1;
+        }
+
+        .why-image {
+            width: 350px;
+            flex-shrink: 0;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .why-closing {
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #2196F3;
+            margin-top: 30px;
+        }
+
+        .features-section {
+            background: white;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .feature-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .feature-item .emoji-icon {
+            font-size: 5em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-item h3 {
+            color: #2196F3;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .config-section {
+            background: #f8f9fa;
+        }
+
+        .config-steps {
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+        .config-step {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            align-items: center;
+        }
+
+        .config-step img {
+            max-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .config-step-content {
+            flex: 1;
+        }
+
+        .config-step h3 {
+            color: #2196F3;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .landline-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .landline-box-content {
+            flex: 1;
+        }
+
+        .landline-box img {
+            max-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .landline-box h3 {
+            color: #2196F3;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .other-features {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .other-features-content {
+            flex: 1;
+        }
+
+        .other-features img {
+            max-width: 250px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .other-features h3 {
+            color: #2196F3;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+        }
+
+        .other-features p {
+            margin-bottom: 15px;
+        }
+
+        .faq-section {
+            background: white;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 20px;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2196F3;
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #8BC34A;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
         }
 
         @media (max-width: 768px) {
-            .content-box {
-                padding: 40px 20px;
+            .hero h1 {
+                font-size: 1.8em;
+                white-space: normal;
             }
 
-            h1 {
-                font-size: 2em;
+            .hero-tagline {
+                font-size: 1.2em;
             }
 
-            .logo {
-                width: 120px;
-                height: 120px;
+            .hero-logo {
+                width: 150px;
+                height: 150px;
+            }
+
+            .hero-main {
+                flex-direction: column;
+            }
+
+            .hero-photo {
+                width: 100%;
+                max-width: 400px;
+            }
+
+            section {
+                padding: 50px 20px;
+            }
+
+            section h2 {
+                font-size: 1.8em;
+            }
+
+            .config-step {
+                flex-direction: column;
+            }
+
+            .config-step img {
+                max-width: 100%;
+            }
+
+            .landline-box {
+                flex-direction: column;
+            }
+
+            .landline-box img {
+                max-width: 100%;
+            }
+
+            .other-features {
+                flex-direction: column;
+            }
+
+            .other-features img {
+                max-width: 100%;
+            }
+
+            .language-nav .container {
+                gap: 10px;
+            }
+
+            .language-nav a {
+                font-size: 1em;
+                padding: 8px 12px;
+            }
+
+            .why-story {
+                flex-direction: column;
+            }
+
+            .why-image {
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
             }
         }
     </style>
@@ -145,29 +504,289 @@
 <body>
     <nav class="language-nav">
         <div class="container">
-            <a href="../index.html">🇪🇸 Español</a>
-            <a href="../en/index.html">🇬🇧 English</a>
-            <a href="../pt/index.html">🇵🇹 Português</a>
-            <a href="../de/index.html">🇩🇪 Deutsch</a>
-            <a href="../fr/index.html">🇫🇷 Français</a>
-            <a href="../zh/index.html">🇨🇳 中文</a>
-            <a href="index.html" class="active">🇯🇵 日本語</a>
+            <a href="../index.html"><img src="../images/flags/flag-es.png" alt="ES" class="flag"> Español</a>
+            <a href="../eu/index.html"><img src="../images/flags/flag-eu.png" alt="EU" class="flag"> Euskera</a>
+            <a href="../en/index.html"><img src="../images/flags/flag-gb.png" alt="EN" class="flag"> English</a>
+            <a href="../pt/index.html"><img src="../images/flags/flag-pt.png" alt="PT" class="flag"> Português</a>
+            <a href="../de/index.html"><img src="../images/flags/flag-de.png" alt="DE" class="flag"> Deutsch</a>
+            <a href="../fr/index.html"><img src="../images/flags/flag-fr.png" alt="FR" class="flag"> Français</a>
+            <a href="../zh/index.html"><img src="../images/flags/flag-cn.png" alt="ZH" class="flag"> 中文</a>
+            <a href="index.html" class="active"><img src="../images/flags/flag-jp.png" alt="JP" class="flag"> 日本語</a>
         </div>
     </nav>
 
-    <div class="main-content">
-        <div class="content-box">
-            <img src="../images/logo.png" alt="EasyCall Logo" class="logo">
-            <h1>EasyCall</h1>
-            <p class="language-name">OneTouch Photo Phone</p>
-            <p class="language-name"><strong>日本語</strong></p>
-            
-            <div class="coming-soon">
-                <p>このページは現在構築中です。</p>
-                <p>当面はスペイン語版をご覧ください：</p>
-                <a href="../index.html" class="spanish-link">スペイン語版へ</a>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <img src="../images/logo.png" alt="EasyCallロゴ" class="hero-logo">
+                
+                <div class="hero-title-section">
+                    <h1>EasyCall - OneTouch Photo Phone</h1>
+                </div>
+                
+                <div class="hero-main">
+                    <div class="hero-text">
+                        <p class="hero-tagline">
+                            <strong>EasyCallはあらゆるスマートフォンをアクセシブルなデバイスに変えます</strong>
+                        </p>
+                        <p style="font-size: 1.2em; margin-bottom: 20px;">
+                            大きな写真で簡単に電話。高齢者に最適です。
+                        </p>
+                        
+                        <ul class="features-list">
+                            <li>連絡先の大きな写真を表示する画面</li>
+                            <li>ワンタッチで電話</li>
+                            <li>複雑なメニューや気が散る要素なし</li>
+                            <li>ハンズフリー自動起動</li>
+                            <li>画面は常にオン</li>
+                            <li>設定へのアクセス保護</li>
+                        </ul>
+
+                        <a href="#" class="cta-button disabled" title="Google Playストアで近日公開">
+                            📱 Google Playでダウンロード
+                        </a>
+                        <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.8;">
+                            近日公開
+                        </p>
+                    </div>
+                    
+                    <div class="hero-image-container">
+                        <img src="../images/easycall-person-using.jpg" alt="高齢者がEasyCallを使用している" class="hero-photo">
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <section class="why-section">
+        <div class="container">
+            <h2>💡 EasyCallが生まれた理由</h2>
+            <div class="why-content">
+                <div class="why-story">
+                    <div class="why-text">
+                        <p>
+                            EasyCallは、実際の個人的なニーズから生まれました。90歳の義母は、初期の老人性認知症を患っており、細かい運動能力に影響が出ています。そのため、スマートフォンを普通に使うことができません。タッチスクリーンは小さすぎ、メニューは複雑すぎ、ジェスチャーは正確すぎるのです。
+                        </p>
+                        <p>
+                            高齢者向けの特別な電話を試しましたが、それでも彼女のニーズに適応できませんでした。
+                        </p>
+                        <p>
+                            だからこそ、EasyCallを開発することにしました。運動や認知に困難がある人でも、ワンタッチで大切な人に電話できるよう特別に設計されたアプリです。今、彼女はとても幸せです。いつでも好きなときに愛する人に電話できる自立を取り戻したからです。
+                        </p>
+                        <p>
+                            彼女のことを考えてアプリを開発しましたが、私自身も毎日使っています。スマートフォンの操作に問題はありませんが、EasyCallは連絡先を検索したりお気に入りに登録したりするよりも、よく連絡する相手に電話するのがより速く、シンプルで効果的です。
+                        </p>
+                        <p class="why-closing">
+                            ワンタッチで電話。それだけです。
+                        </p>
+                    </div>
+                    <img src="../images/El_porqué_de_EasyCall.png" alt="高齢者が携帯電話を使用している" class="why-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <h2>✅ 主な機能</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <img src="../images/screenshot-main.png" alt="大きな写真を表示するメイン画面">
+                    <h3>大きく明確な写真</h3>
+                    <p>大きな写真と触りやすいボタンの連絡先。視覚または運動に困難のある方に最適です。</p>
+                </div>
+
+                <div class="feature-item">
+                    <img src="../images/screenshot-config.png" alt="簡単な設定">
+                    <h3>簡単設定</h3>
+                    <p>家族や介護者が簡単に連絡先を設定できます。ユーザーは大切な人の写真だけを見ます。</p>
+                </div>
+
+                <div class="feature-item">
+                    <span class="emoji-icon">🔊</span>
+                    <h3>自動ハンズフリー</h3>
+                    <p>通話時にハンズフリーが自動的に起動します。移動に困難のある方に最適です。</p>
+                </div>
+            </div>
+
+            <div style="max-width: 800px; margin: 60px auto 0; text-align: center;">
+                <h3 style="color: #2196F3; margin-bottom: 20px; font-size: 1.5em;">こんな方に最適：</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: left;">
+                    <div>
+                        <p style="font-size: 1.1em;">👵 高齢者</p>
+                        <p style="font-size: 1.1em;">🧠 認知症やアルツハイマー病の方</p>
+                    </div>
+                    <div>
+                        <p style="font-size: 1.1em;">🤲 運動機能に困難のある方</p>
+                        <p style="font-size: 1.1em;">✨ シンプルさを求める方</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="config-section">
+        <div class="container">
+            <h2>⚙️ EasyCallの設定方法</h2>
+            
+            <div class="config-steps">
+                <div class="config-step">
+                    <img src="../images/screenshot-contacts.png" alt="ステップ1">
+                    <div class="config-step-content">
+                        <h3>1. EasyCallで表示したい連絡先を保存します</h3>
+                        <p>携帯電話の連絡先アプリを使用して、EasyCallで選択したい連絡先を連絡帳に保存し、できればその連絡先に表示したい写真を保存してください。選択した連絡先に写真がない場合は、通話ボタンに連絡先の名前が表示されます。連絡先に複数の電話番号がある場合、EasyCallは連絡先に保存されている最初の電話番号を使用します。</p>
+                    </div>
+                </div>
+
+                <div class="config-step">
+                    <img src="../images/screenshot-configbutton.png" alt="ステップ2">
+                    <div class="config-step-content">
+                        <h3>2. 設定にアクセス</h3>
+                        <p>EasyCallを開き、レンチアイコン🔧をタップします</p>
+                    </div>
+                </div>
+
+                <div class="config-step">
+                    <img src="../images/screenshot-config-grid.png" alt="ステップ3">
+                    <div class="config-step-content">
+                        <h3>3. 画面を設定</h3>
+                        <p>横方向（2-8）と縦方向（1-4）の写真数を選択します。ユーザーのニーズに合わせて表示を調整してください。画面上の写真の配置は選択した連絡先の数に適応しますが、各画面には最大で選択した横方向と縦方向の写真数が表示されます。</p>
+                        
+                        <p>この画面では、設定アイコン（レンチ）の表示を有効または無効にすることもできます。デフォルトでは有効になっており、メイン画面の左上隅に表示されます。無効にするとアイコンは消えますが、機能は同じ場所に残ります。設定にアクセスするには、最初に表示される同じエリアを2秒以上長押しするだけです（最初の写真がそのエリアに重なることがあり、押す際には写真の左上隅を含める必要があります）。このオプションは、認知に困難のあるユーザーが誤って設定にアクセスしてメイン画面を離れるのを防ぐのに特に便利です。</p>
+                    </div>
+                </div>
+
+                <div class="config-step">
+                    <img src="../images/screenshot-contacts-list.png" alt="ステップ4">
+                    <div class="config-step-content">
+                        <h3>4. 連絡先を追加</h3>
+                        <p>「連絡先を追加」をタップし、連絡帳から連絡先を選択します。EasyCallは連絡先の写真と最初の電話番号を使用します。連絡先の名前をタップすると、その位置に別の連絡先を選択できます。連絡先の位置番号の左側にあるアイコンを長押しすると、ドラッグ&ドロップでその連絡先をリスト内の別の位置に移動できます。設定が完了したら、設定を保存するとEasyCallのメインページに戻ります。</p>
+                    </div>
+                </div>
+
+                <div class="landline-box">
+                    <div class="landline-box-content">
+                        <h3>📱 固定電話モード（ランチャー）</h3>
+                        <p>
+                            EasyCallは電話のランチャー（ホームアプリ）として設定できます。また、アプリが開いている間、画面は常にオンのままです。
+                        </p>
+                        <p>
+                            これにより、電話を常に充電しながらテーブルの上に置いておくことができ、画面がアクティブな状態でいつでもワンタッチで電話できます。<strong>まるで固定電話のように</strong>。
+                        </p>
+                    </div>
+                    <img src="../images/easycall-landline-mode.jpg" alt="固定電話モード">
+                </div>
+
+                <div class="other-features">
+                    <div class="other-features-content">
+                        <h3>その他の機能：</h3>
+                        <p>
+                            いくつかの連絡先が設定されると、設定アクセスアイコン（レンチ）が画面の左上隅に表示されます。しかし、設定画面でこのアイコンの表示を無効にすることができます。実際には設定アクセス機能は同じ場所に残っていますが、見えなくなり、アクセスするには最初に表示される同じエリアを2秒以上長押しする必要があります（最初の写真が設定アクセスエリアに重なることがあり、押す際には写真の左上隅を含める必要があります）。
+                        </p>
+                        <p>
+                            一部の電話モデルでは、ハンズフリー機能が自動的に起動するようにするには、EasyCallアプリに制限付き設定の許可を与える必要があります。設定/アプリケーション/EasyCallで設定しますが、これは各スマートフォンモデルによって異なる場合があります。
+                        </p>
+                    </div>
+                    <img src="../images/screenshot-config-icon-hidden.jpg" alt="非表示の設定アイコン">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <h2>❓ よくある質問</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">EasyCallはどのデバイスで動作しますか？</div>
+                    <div class="faq-answer">
+                        EasyCallはあらゆるAndroidスマートフォンまたはタブレットで動作します。アプリはデバイスの画面サイズに自動的に適応します。
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">自分の連絡先の写真を使用できますか？</div>
+                    <div class="faq-answer">
+                        はい、EasyCallは連絡先にすでに保存されている写真を使用します。携帯電話の連絡先アプリに写真付きの連絡先があればよいだけです。ただし、写真のない連絡先を選択した場合は、保存されている連絡先の名前が表示されます。
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">自動ハンズフリーはすべての携帯電話で動作しますか？</div>
+                    <div class="faq-answer">
+                        自動ハンズフリー起動機能は、メーカーによって異なるため、すべての電話モデルで動作するわけではありません。場合によっては、アプリにアクセシビリティ権限を付与することで解決できますが、メーカーが自動ハンズフリー起動を許可していない場合もあります。
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">アプリを永続的なホーム画面として設定できますか？</div>
+                    <div class="faq-answer">
+                        はい、EasyCallは電話のランチャー（ホームアプリ）として設定できます。これは、デバイスをデジタル固定電話に変えるのに理想的です。ランチャーとして設定されている場合に終了するには、電話の電源ボタンを押してください。
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">何件の連絡先を追加できますか？</div>
+                    <div class="faq-answer">
+                        必要なだけ連絡先を追加できます。1画面に収まる以上の連絡先を選択すると、追加の画面が自動的に作成されます。ナビゲーションボタンで画面間を移動できます。
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">EasyCallは私のデータを外部サーバーに保存しますか？</div>
+                    <div class="faq-answer">
+                        いいえ。EasyCallは自社のサーバーや外部の場所に連絡先データを保存しません。アプリは、お使いの携帯電話にすでに保存されている連絡先データにのみアクセスします。すべての設定はデバイスにローカルに保存されます。
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">設定するのに技術的な知識が必要ですか？</div>
+                    <div class="faq-answer">
+                        いいえ。設定は非常にシンプルで直感的です。家族や介護者なら誰でも数分で連絡先を設定できます。設定が完了すると、エンドユーザーは写真だけを見て、シンプルなタッチで電話をかけることができます。
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">EasyCallをランチャーとして使用する場合、携帯電話から他のアプリをアンインストールできますか？</div>
+                    <div class="faq-answer">
+                        EasyCallはランチャーとして機能できますが、他のアプリへのアクセスを制限することはなく、アンインストールする必要もありません。単に、電話の電源を入れたりホームボタンを押したりしたときに表示されるアプリがEasyCallになるだけです。
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">設定後に連絡先のデータや写真を変更するとどうなりますか？</div>
+                    <div class="faq-answer">
+                        EasyCallはアプリに保存された時点の連絡先データを保持します。連絡先の写真とデータを変更したい場合は、EasyCallの設定から連絡先を削除し、再度追加して写真や電話番号を更新する必要があります。
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">設定後に連絡先を連絡帳から削除するとどうなりますか？</div>
+                    <div class="faq-answer">
+                        連絡帳から連絡先を削除しても、EasyCallのその連絡先のデータは残ります。EasyCallからも削除したい場合は、EasyCallの設定に再度アクセスして、アプリからその連絡先を削除するか、別の連絡先に置き換える必要があります。
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">設定ツールの表示を無効にしたら、設定にアクセスできなくなりました？</div>
+                    <div class="faq-answer">
+                        設定へのアクセスは、見えなくても同じ位置に残っています。ただし、アクセスするにはそのエリアを2秒以上長押しする必要があります。画面の最初の写真が設定アクセスエリアに重なることがあり、押す際には写真の左上隅を含める必要があります。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 EasyCall - OneTouch Photo Phone</p>
+            <div class="footer-links">
+                <a href="../privacy-en.html">プライバシーポリシー</a>
+                <a href="mailto:albarmun@gmail.com">📧 サポート：albarmun@gmail.com</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
