@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EasyCall - Telefono-deiak errazak argazki handiekin. Pertsona nagusientzat ideala, dementzia eta Alzheimer.">
+    <title>EasyCall - OneTouch Photo Phone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Hizkuntza nabigazioa */
+        .language-nav {
+            background: #f8f9fa;
+            padding: 15px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .language-nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .language-nav a {
+            color: #666;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.2em;
+            font-weight: 500;
+        }
+
+        .language-nav a:hover {
+            background: #e0e0e0;
+            transform: translateY(-2px);
+        }
+
+        .language-nav a.active {
+            background: #2196F3;
+            color: white;
+            box-shadow: 0 4px 10px rgba(33, 150, 243, 0.3);
+        }
+
+        .flag {
+            width: 32px;
+            height: 24px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #8BC34A 0%, #689F38 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-main {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+        }
+
+        .hero-image-container {
+            flex-shrink: 0;
+        }
+
+        .hero-photo {
+            width: 400px;
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .hero-logo {
+            width: 200px;
+            height: 200px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-tagline {
+            font-size: 1.5em;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        .features-list {
+            list-style: none;
+            text-align: left;
+            display: inline-block;
+            margin: 30px 0;
+        }
+
+        .features-list li {
+            padding: 10px 0;
+            font-size: 1.1em;
+        }
+
+        .features-list li:before {
+            content: "✓ ";
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #2196F3;
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background: #1976D2;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .cta-button.disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .cta-button.disabled:hover {
+            transform: none;
+            background: #ccc;
+        }
+
+        /* Atalak */
+        section {
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2.2em;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        section p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        /* Zergatik jaio zen atala */
+        .why-section {
+            background: #f8f9fa;
+        }
+
+        .why-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .why-story {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .why-text {
+            flex: 1;
+        }
+
+        .why-image {
+            width: 350px;
+            flex-shrink: 0;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .why-closing {
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #2196F3;
+            margin-top: 30px;
+        }
+
+        /* Ezaugarriak atala */
+        .features-section {
+            background: white;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .feature-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .feature-item .emoji-icon {
+            font-size: 5em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-item h3 {
+            color: #2196F3;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        /* Konfigurazio atala */
+        .config-section {
+            background: #f8f9fa;
+        }
+
+        .config-steps {
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+        .config-step {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            align-items: center;
+        }
+
+        .config-step img {
+            max-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .config-step-content {
+            flex: 1;
+        }
+
+        .config-step h3 {
+            color: #2196F3;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .landline-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .landline-box-content {
+            flex: 1;
+        }
+
+        .landline-box img {
+            max-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .landline-box h3 {
+            color: #2196F3;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .other-features {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .other-features-content {
+            flex: 1;
+        }
+
+        .other-features img {
+            max-width: 250px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .other-features h3 {
+            color: #2196F3;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+        }
+
+        .other-features p {
+            margin-bottom: 15px;
+        }
+
+        /* FAQ atala */
+        .faq-section {
+            background: white;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 20px;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2196F3;
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Oina */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #8BC34A;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8em;
+            }
+
+            .hero-tagline {
+                font-size: 1.2em;
+            }
+
+            .hero-logo {
+                width: 150px;
+                height: 150px;
+            }
+
+            .hero-main {
+                flex-direction: column;
+            }
+
+            .hero-photo {
+                width: 100%;
+                max-width: 400px;
+            }
+
+            section {
+                padding: 50px 20px;
+            }
+
+            section h2 {
+                font-size: 1.8em;
+            }
+
+            .config-step {
+                flex-direction: column;
+            }
+
+            .config-step img {
+                max-width: 100%;
+            }
+
+            .landline-box {
+                flex-direction: column;
+            }
+
+            .landline-box img {
+                max-width: 100%;
+            }
+
+            .other-features {
+                flex-direction: column;
+            }
+
+            .other-features img {
+                max-width: 100%;
+            }
+
+            .language-nav .container {
+                gap: 10px;
+            }
+
+            .language-nav a {
+                font-size: 1em;
+                padding: 8px 12px;
+            }
+
+            .why-story {
+                flex-direction: column;
+            }
+
+            .why-image {
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hizkuntza nabigazioa -->
+    <nav class="language-nav">
+        <div class="container">
+            <a href="../index.html"><img src="https://flagcdn.com/w40/es.png" alt="ES" class="flag"> Español</a>
+            <a href="index.html" class="active"><img src="https://flagcdn.com/w40/es-pv.png" alt="EU" class="flag"> Euskera</a>
+            <a href="../en/index.html"><img src="https://flagcdn.com/w40/gb.png" alt="EN" class="flag"> English</a>
+            <a href="../pt/index.html"><img src="https://flagcdn.com/w40/pt.png" alt="PT" class="flag"> Português</a>
+            <a href="../de/index.html"><img src="https://flagcdn.com/w40/de.png" alt="DE" class="flag"> Deutsch</a>
+            <a href="../fr/index.html"><img src="https://flagcdn.com/w40/fr.png" alt="FR" class="flag"> Français</a>
+            <a href="../zh/index.html"><img src="https://flagcdn.com/w40/cn.png" alt="ZH" class="flag"> 中文</a>
+            <a href="../ja/index.html"><img src="https://flagcdn.com/w40/jp.png" alt="JP" class="flag"> 日本語</a>
+        </div>
+    </nav>
+
+    <!-- Hero atala -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <img src="../images/logo.png" alt="EasyCall Logoa" class="hero-logo">
+                
+                <div class="hero-main">
+                    <div class="hero-text">
+                        <h1>EasyCall - OneTouch Photo Phone</h1>
+                        <p class="hero-tagline">
+                            <strong>EasyCallk edozein smartphone gailu eskuragarri bihurtzen du</strong>
+                        </p>
+                        <p style="font-size: 1.2em; margin-bottom: 20px;">
+                            Telefono-deiak errazak argazki handiekin. Pertsona nagusientzat ideala.
+                        </p>
+                        
+                        <ul class="features-list">
+                            <li>Pantaila kontaktuen argazki handiekin</li>
+                            <li>Ukitu bakar bat deitzeko</li>
+                            <li>Menu konplikatuak edo distrakziorik gabe</li>
+                            <li>Esku libreak automatikoki aktibatzea</li>
+                            <li>Pantaila beti piztuta</li>
+                            <li>Konfiguraziora sarbide babestua</li>
+                        </ul>
+
+                        <a href="#" class="cta-button disabled" title="Laster Google Play Store-n">
+                            📱 Deskargatu Google Play-n
+                        </a>
+                        <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.8;">
+                            Laster eskuragarri
+                        </p>
+                    </div>
+                    
+                    <div class="hero-image-container">
+                        <img src="../images/easycall-person-using.jpg" alt="Pertsona nagusia EasyCall erabiltzen" class="hero-photo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Zergatik jaio zen EasyCall -->
+    <section class="why-section">
+        <div class="container">
+            <h2>💡 Zergatik jaio zen EasyCall</h2>
+            <div class="why-content">
+                <div class="why-story">
+                    <div class="why-text">
+                        <p>
+                            EasyCall behar errealetik eta pertsonaletik sortu zen. Nire amaginarrebak, 90 urte dituenean, dementzia senil hasiera bat du eta motrizitate fina kaltetzen ari zaio. Honek smartphone bat normalean erabiltzea galarazten dio: ukimen-pantailak txikiegiak dira bere ustez, menuak konplikatuegiak eta keinuak zehatzegia.
+                        </p>
+                        <p>
+                            Pertsona nagusientzako telefono bereziak probatu genituen, baina horiek ere ezin izan ziren bere beharretara egokitu.
+                        </p>
+                        <p>
+                            Horregatik erabaki nuen EasyCall garatzea: zailtasun motorrak edo kognitiboak dituzten pertsonek ukitu bakar batekin maite dituztenei deitu ahal izateko bereziki diseinatutako aplikazioa. Orain oso pozik dago, nahi duenean maite dituzten pertsonei deitzeko autonomia berreskuratu duelako.
+                        </p>
+                        <p>
+                            Aplikazioa haren buruan garatu arren, nik neu egunero erabiltzen dut. Smartphone bat maneiatzeko arazorik ez izan arren, EasyCall azkarragoa, sinpleagoa eta eraginkorragoa da nire ohiko kontaktuei deitzeko agenda-n bilatu edo gogokoen artean markatu baino.
+                        </p>
+                        <p class="why-closing">
+                            Ukitu bat eta deitzen dut. Hain erraza.
+                        </p>
+                    </div>
+                    <img src="../images/El_porqué_de_EasyCall.png" alt="Pertsona nagusia mugikorra erabiltzen" class="why-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ezaugarri nagusiak -->
+    <section class="features-section">
+        <div class="container">
+            <h2>✅ Ezaugarri Nagusiak</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <img src="../images/screenshot-main.png" alt="Pantaila nagusia argazki handiekin">
+                    <h3>Argazki handiak eta argiak</h3>
+                    <p>Kontaktuak argazki handiekin eta ukitzeko erraza den botoiekin. Ikusmen edo motor arazoak dituzten pertsonentzat ezin hobea.</p>
+                </div>
+
+                <div class="feature-item">
+                    <img src="../images/screenshot-config.png" alt="Konfigurazio erraza">
+                    <h3>Konfigurazio erraza</h3>
+                    <p>Senide edo zaintzaile batek kontaktuak erraz konfigura ditzake. Erabiltzaileak bere maite dituztenen argazkiak bakarrik ikusiko ditu.</p>
+                </div>
+
+                <div class="feature-item">
+                    <span class="emoji-icon">🔊</span>
+                    <h3>Esku libreak automatikoa</h3>
+                    <p>Esku libreak automatikoki aktibatzen da deitzean, mugikortasun gutxiko pertsonentzat ideala.</p>
+                </div>
+            </div>
+
+            <div style="max-width: 800px; margin: 60px auto 0; text-align: center;">
+                <h3 style="color: #2196F3; margin-bottom: 20px; font-size: 1.5em;">Hauentzat ideala:</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: left;">
+                    <div>
+                        <p style="font-size: 1.1em;">👵 Pertsona nagusiak</p>
+                        <p style="font-size: 1.1em;">🧠 Dementzia edo Alzheimer duten pertsonak</p>
+                    </div>
+                    <div>
+                        <p style="font-size: 1.1em;">🤲 Zailtasun motorrak dituzten pertsonak</p>
+                        <p style="font-size: 1.1em;">✨ Sinpletasuna bilatzen duen edozein pertsona</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nola konfiguratu -->
+    <section class="config-section">
+        <div class="container">
+            <h2>⚙️ Nola konfiguratu EasyCall</h2>
+            
+            <div class="config-steps">
+                <div class="config-step">
+                    <img src="../images/screenshot-contacts.png" alt="1. pausoa">
+                    <div class="config-step-content">
+                        <h3>1. Gorde zure kontaktuetan EasyCall-en ikusi nahi dituzunak</h3>
+                        <p>Mugikorraren kontaktuen aplikazioa erabiliz, gorde zure kontaktu-agendan EasyCall-en hautatu nahi dituzunak, eta nahiago bada, gorde kontaktuan erakutsi nahi duzun argazkia. Hautatutako kontaktuak argazkirik ez badu, kontaktuaren izena bistaratuko da dei egiteko botoia. Kontaktu batek telefono bat baino gehiago badu, EasyCallk kontaktuan gordeta dagoen lehen telefonoa erabiliko du.</p>
+                    </div>
+                </div>
+
+                <div class="config-step">
+                    <img src="../images/screenshot-configbutton.png" alt="2. pausoa">
+                    <div class="config-step-content">
+                        <h3>2. Sartu konfigurazioan</h3>
+                        <p>Ireki EasyCall eta sakatu konfigurazio-gakoa 🔧</p>
+                    </div>
+                </div>
+
+                <div class="config-step">
+                    <img src="../images/screenshot-config-grid.png" alt="3. pausoa">
+                    <div class="config-step-content">
+                        <h3>3. Konfiguratu pantaila</h3>
+                        <p>Hautatu argazki kopurua horizontalean (2-8) eta bertikalean (1-4). Egokitu bistaratzea erabiltzailearen beharretara. Argazkien banaketa pantailan hautatutako kontaktu kopurura egokituko da, baina gehienez ere, pantaila bakoitzean, horizontalean eta bertikalean hautatutako argazki kopurua bistaratuko da.</p>
+                        
+                        <p>Pantaila honetan konfigurazio-ikonoaren (ingelesa gakoa) bistaratzea ere aktibatu edo desaktibatu dezakezu. Lehenespenez aktibatuta dago eta pantaila nagusiaren goiko ezkerreko izkinan erakusten da. Desaktibatzen baduzu, ikonoa desagertuko da baina funtzionaltasuna leku berean jarraituko du: konfiguraziora sartzeko, nahikoa da bi segundo baino gehiagoko sakaldura luzea egitea hasieran bistaratzen den eremu berean (batzuetan lehen argazkia gainjarri egiten da eremu horri eta sakaldurak argazkiaren goiko ezkerreko izkina sartu behar du). Aukera hau oso erabilgarria da zailtasun kognitiboak dituzten erabiltzaileek ustekabean konfiguraziora sartu eta pantaila nagusitik irten ez dezaten.</p>
+                    </div>
+                </div>
+
+                <div class="config-step">
+                    <img src="../images/screenshot-contacts-list.png" alt="4. pausoa">
+                    <div class="config-step-content">
+                        <h3>4. Gehitu kontaktuak</h3>
+                        <p>Sakatu "Gehitu kontaktua" eta hautatu zure agendako kontaktuak. EasyCallk kontaktuaren argazkia eta bere lehen telefono-zenbakia erabiliko ditu. Kontaktuaren izenean sakatuz, kontaktu desberdina hautatu dezakezu posizio horretan. Kontaktuaren posizio-zenbakiaren ezkerrean ikono bat dago eta sakaldura luzea eginez kontaktu hori beste posizio batera aldatu dezakezu zerrendako drag&drop erabiliz. Konfigurazioa amaitzean, gorde konfigurazioa eta EasyCall-en orri nagusira itzuliko zara.</p>
+                    </div>
+                </div>
+
+                <div class="landline-box">
+                    <div class="landline-box-content">
+                        <h3>📱 Telefono Finko Modua (Launcher)</h3>
+                        <p>
+                            EasyCall launchertzat (hasiera-aplikazio) konfigura daiteke telefonoan. Gainera, pantaila beti piztuta egoten da aplikazioa irekita dagoen bitartean.
+                        </p>
+                        <p>
+                            Honek aukera ematen du telefonoa mahai baten gainean etengabe entxufatuta uzteko, pantaila aktiboarekin eta edozein unetan ukitu bakar batekin deitzeko prest, <strong>telefono finko bat balitz bezala</strong>.
+                        </p>
+                    </div>
+                    <img src="../images/easycall-landline-mode.jpg" alt="Telefono finko modua">
+                </div>
+
+                <div class="other-features">
+                    <div class="other-features-content">
+                        <h3>Beste funtzionalitate batzuk:</h3>
+                        <p>
+                            Kontaktu batzuk konfiguratu ondoren, konfiguraziora sartzeko ikonoa, ingelesa gakoa, pantaila nagusiaren goiko ezkerreko izkinan agertuko da. Baina konfigurazio-pantailan ikono honen bistaratzea desaktiba daiteke. Errealitatean, konfiguraziora sartzeko funtzionaltasuna leku berean jarraitzen du, baina ikusgai ez dago eta sartzeko bi segundo baino gehiagoko sakaldura egiten da hasieran bistaratzen den eremu berean (batzuetan lehen argazkia gainjarri egiten da konfiguraziora sartzeko gunea eta sakaldurak argazkiaren goiko ezkerreko izkina sartu behar du).
+                        </p>
+                        <p>
+                            Mugikor eredu batzuetan, esku libreen funtzionaltasuna automatikoki aktibatzeko, EasyCall aplikazioari Ezarpen Murriztuak baimentzea beharrezkoa izango da. Ezarpenak/Aplikazioak/EasyCall-en konfiguratzen da, baina hau smartphone eredu bakoitzaren arabera aldatu daiteke.
+                        </p>
+                    </div>
+                    <img src="../images/screenshot-config-icon-hidden.jpg" alt="Konfigurazio-ikonoa ezkutuan">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ohiko Galderak -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>❓ Ohiko Galderak</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">Zein gailuetan funtzionatzen du EasyCall-ek?</div>
+                    <div class="faq-answer">
+                        EasyCall edozein smartphone edo Android tabletan funtzionatzen du. Aplikazioa automatikoki egokitzen da zure gailuaren pantaila-tamainara.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Nire kontaktuen argazki propioak erabil ditzaket?</div>
+                    <div class="faq-answer">
+                        Bai, EasyCallk zure kontaktuen agendan gordetako argazkiak erabiltzen ditu. Zure telefonoaren kontaktu-aplikazioan argazkiarekin kontaktuak izan behar dituzu soilik. Baina argazkirik gabeko kontaktu bat hautatzen baduzu, gordeta dagoen kontaktuaren izena bistaratuko da.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Esku libreen automatikoa mugikor guztietan funtzionatzen al du?</div>
+                    <div class="faq-answer">
+                        Esku libreen aktibazio automatikoko funtzioa ez da telefono-eredu guztietan funtzionatzen, fabrikatzaile bakoitzaren araberakoa delako. Kasu batzuetan, aplikazioari irisgarritasun-baimenak emanez konpontzen da, baina beste kasu batzuetan fabrikatzaileak ez du esku libreak automatikoki aktibatzea baimentzen.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Aplikazioa hasierako pantaila iraunkor gisa konfigura dezaket?</div>
+                    <div class="faq-answer">
+                        Bai, EasyCall launchertzat (hasiera-aplikazio) konfigura daiteke telefonoan. Hau ezin hobea da gailua telefono finko digital batean bihurtzeko. Launcher gisa konfiguratuta dagoenean irteteko, sakatu telefonoaren itzaltzeko botoia.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Zenbat kontaktu gehi ditzaket?</div>
+                    <div class="faq-answer">
+                        Behar dituzun kontaktu guztiak gehi ditzakezu. Pantaila batean sartzen diren baino kontaktu gehiago hautatzen badituzu, pantaila gehigarriak automatikoki sortuko dira. Nabigazio-botoi batek haien artean mugitzea ahalbidetuko dizu.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">EasyCall-ek nire datuak kanpoko zerbitzari batean gordetzen al ditu?</div>
+                    <div class="faq-answer">
+                        Ez. EasyCallk ez du kontaktuen daturik bere zerbitzarietan edo kanpoko leku batean gordetzen. Aplikazioak zure telefonoan gordetako kontaktuen datuetara soilik sartzen da. Konfigurazio guztia lokalean gordetzen da zure gailuan.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Ezagutza teknikoak behar ditut konfiguratzeko?</div>
+                    <div class="faq-answer">
+                        Ez. Konfigurazioa oso erraza eta intuitiboa da. Edozein senide edo zaintzailek minutu gutxitan konfigura ditzake kontaktuak. Konfiguratuta dagoenean, azken erabiltzaileak argazkiak bakarrik ikusiko ditu eta ukitu bakar batekin dei egin ahal izango du.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Mugikorretik beste aplikazioak desinstalatu ditzaket EasyCall launcher gisa erabiltzen badut?</div>
+                    <div class="faq-answer">
+                        EasyCall launcher gisa funtziona dezakeen arren, ez du beste aplikazioetara sarbidea mugatzen ez eta desinstalatzea beharrezkoa ere. Soilik EasyCall izango da telefonoa piztean edo hasierako botoia sakatzean bistaratuko den aplikazioa.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Zer gertatzen da konfiguratuta dagoenean kontaktu baten datuak edo argazkia aldatzen badut?</div>
+                    <div class="faq-answer">
+                        EasyCallk kontaktuaren datuak aplikazioan gorde zen unean mantentzen ditu. Kontaktuaren argazkia eta kontaktuaren datuak aldatu nahi badituzu, EasyCall-en konfiguraziotik kontaktua ezabatu eta berriro gehitu behar duzu argazkia eta/edo telefonoa eguneratu dezan.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Zer gertatzen da konfiguratutako kontaktu bat nire kontaktu-agendatik ezabatzen badut?</div>
+                    <div class="faq-answer">
+                        Kontaktu bat zure agendatik ezabatzen baduzu, kontaktu horren datuak EasyCall-en jarraituko dute. EasyCall-etik ere kendu nahi baduzu, EasyCall-en konfiguraziora berriro sartu beharko duzu kontaktu hori aplikaziotik ezabatzeko edo beste batekin ordezkatzeko.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Konfigurazio-tresnaren bistaratzea desaktibatu dut eta ezin dut berriro konfiguraziora sartu?</div>
+                    <div class="faq-answer">
+                        Konfiguraziora sartzea posizio berean jarraitzen du, nahiz eta ikusgai ez egon, baina orain sartzeko bi segundo baino gehiagoz sakatu behar duzu eremu horretan. Batzuetan pantailako lehen argazkia konfiguraziora sartzeko eremua estaltzen du eta sakaldurak argazkiaren goiko ezkerreko izkina sartu behar du.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Oina -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 EasyCall - OneTouch Photo Phone</p>
+            <div class="footer-links">
+                <a href="../privacy-en.html">Pribatutasun Politika</a>
+                <a href="mailto:albarmun@gmail.com">📧 Laguntza: albarmun@gmail.com</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
