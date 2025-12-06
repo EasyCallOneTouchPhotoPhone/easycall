@@ -87,6 +87,31 @@
             gap: 40px;
         }
 
+        .hero-main {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+        }
+
+        .hero-image-container {
+            flex-shrink: 0;
+        }
+
+        .hero-photo {
+            width: 400px;
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
         .hero-logo {
             width: 200px;
             height: 200px;
@@ -104,7 +129,6 @@
             font-size: 1.5em;
             font-weight: 300;
             margin-bottom: 30px;
-            max-width: 800px;
         }
 
         .features-list {
@@ -207,6 +231,14 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
 
+        .why-closing {
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #2196F3;
+            margin-top: 30px;
+        }
+
         /* Sección Características */
         .features-section {
             background: white;
@@ -277,11 +309,51 @@
             font-size: 1.4em;
         }
 
+        .landline-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .landline-box-content {
+            flex: 1;
+        }
+
+        .landline-box img {
+            max-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .landline-box h3 {
+            color: #2196F3;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
         .other-features {
             background: white;
             padding: 30px;
             border-radius: 10px;
             margin-top: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .other-features-content {
+            flex: 1;
+        }
+
+        .other-features img {
+            max-width: 250px;
+            border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
@@ -367,6 +439,15 @@
                 height: 150px;
             }
 
+            .hero-main {
+                flex-direction: column;
+            }
+
+            .hero-photo {
+                width: 100%;
+                max-width: 400px;
+            }
+
             section {
                 padding: 50px 20px;
             }
@@ -380,6 +461,22 @@
             }
 
             .config-step img {
+                max-width: 100%;
+            }
+
+            .landline-box {
+                flex-direction: column;
+            }
+
+            .landline-box img {
+                max-width: 100%;
+            }
+
+            .other-features {
+                flex-direction: column;
+            }
+
+            .other-features img {
                 max-width: 100%;
             }
 
@@ -409,6 +506,7 @@
     <nav class="language-nav">
         <div class="container">
             <a href="index.html" class="active"><img src="https://flagcdn.com/w40/es.png" alt="ES" class="flag"> Español</a>
+            <a href="eu/index.html"><img src="https://flagcdn.com/w40/es-pv.png" alt="EU" class="flag"> Euskera</a>
             <a href="en/index.html"><img src="https://flagcdn.com/w40/gb.png" alt="EN" class="flag"> English</a>
             <a href="pt/index.html"><img src="https://flagcdn.com/w40/pt.png" alt="PT" class="flag"> Português</a>
             <a href="de/index.html"><img src="https://flagcdn.com/w40/de.png" alt="DE" class="flag"> Deutsch</a>
@@ -423,30 +521,37 @@
         <div class="container">
             <div class="hero-content">
                 <img src="images/logo.png" alt="EasyCall Logo" class="hero-logo">
-                <div>
-                    <h1>EasyCall - OneTouch Photo Phone</h1>
-                    <p class="hero-tagline">
-                        <strong>EasyCall convierte cualquier smartphone en un dispositivo accesible</strong>
-                    </p>
-                    <p style="font-size: 1.2em; margin-bottom: 20px;">
-                        Llamadas telefónicas fáciles con fotos grandes. Ideal para personas mayores.
-                    </p>
-                    
-                    <ul class="features-list">
-                        <li>Pantalla con fotos grandes de tus contactos</li>
-                        <li>Un solo toque para llamar</li>
-                        <li>Sin menús complicados ni distracciones</li>
-                        <li>Activación automática del altavoz (manos libres)</li>
-                        <li>Pantalla siempre encendida</li>
-                        <li>Acceso protegido a la configuración</li>
-                    </ul>
+                
+                <div class="hero-main">
+                    <div class="hero-text">
+                        <h1>EasyCall - OneTouch Photo Phone</h1>
+                        <p class="hero-tagline">
+                            <strong>EasyCall convierte cualquier smartphone en un dispositivo accesible</strong>
+                        </p>
+                        <p style="font-size: 1.2em; margin-bottom: 20px;">
+                            Llamadas telefónicas fáciles con fotos grandes. Ideal para personas mayores.
+                        </p>
+                        
+                        <ul class="features-list">
+                            <li>Pantalla con fotos grandes de tus contactos</li>
+                            <li>Un solo toque para llamar</li>
+                            <li>Sin menús complicados ni distracciones</li>
+                            <li>Activación automática del manos libres</li>
+                            <li>Pantalla siempre encendida</li>
+                            <li>Acceso protegido a la configuración</li>
+                        </ul>
 
-                    <a href="#" class="cta-button disabled" title="Próximamente en Google Play Store">
-                        📱 Descargar en Google Play
-                    </a>
-                    <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.8;">
-                        Próximamente disponible
-                    </p>
+                        <a href="#" class="cta-button disabled" title="Próximamente en Google Play Store">
+                            📱 Descargar en Google Play
+                        </a>
+                        <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.8;">
+                            Próximamente disponible
+                        </p>
+                    </div>
+                    
+                    <div class="hero-image-container">
+                        <img src="images/easycall-person-using.jpg" alt="Persona mayor usando EasyCall" class="hero-photo">
+                    </div>
                 </div>
             </div>
         </div>
@@ -471,7 +576,7 @@
                         <p>
                             Aunque desarrollé la aplicación pensando en ella, yo mismo la uso a diario. A pesar de no tener ningún problema para manejar un smartphone, EasyCall me resulta más rápido, sencillo y efectivo para llamar a mis contactos habituales que buscarlos en la agenda o marcarlos como favoritos.
                         </p>
-                        <p style="text-align: center; font-size: 1.3em; font-weight: 600; color: #2196F3; margin-top: 30px;">
+                        <p class="why-closing">
                             Un toque y llamo. Así de simple.
                         </p>
                     </div>
@@ -502,7 +607,7 @@
                 <div class="feature-item">
                     <span class="emoji-icon">🔊</span>
                     <h3>Manos libres automático</h3>
-                    <p>El altavoz se activa automáticamente al llamar, ideal para personas con movilidad reducida.</p>
+                    <p>El manos libres se activa automáticamente al llamar, ideal para personas con movilidad reducida.</p>
                 </div>
             </div>
 
@@ -532,7 +637,7 @@
                     <img src="images/screenshot-contacts.png" alt="Paso 1">
                     <div class="config-step-content">
                         <h3>1. Guarda en tus contactos los que quieras ver en EasyCall</h3>
-                        <p>Utilizando la aplicación de contactos del móvil guarda en tu agenda de contactos los que quieras seleccionar en EasyCall, y preferentemente guarda en el contacto la foto que quieras que se muestre de ese contacto.</p>
+                        <p>Utilizando la aplicación de contactos del móvil guarda en tu agenda de contactos los que quieras seleccionar en EasyCall, y preferentemente guarda en el contacto la foto que quieras que se muestre de ese contacto. En caso de que el contacto seleccionado no tenga foto, se presentará el nombre del contacto en el botón para llamar. Si un contacto tiene varios teléfonos, EasyCall utilizará el primer teléfono guardado en el contacto.</p>
                     </div>
                 </div>
 
@@ -550,7 +655,7 @@
                         <h3>3. Configura la pantalla</h3>
                         <p>Selecciona el número de fotos en horizontal (2-8) y en vertical (1-4). Adapta la visualización a las necesidades del usuario. La disposición de las fotos en la pantalla se adaptará al número de contactos seleccionados, pero como máximo, en cada pantalla, se presentará el número de fotos en horizontal y en vertical que se haya seleccionado.</p>
                         
-                        <p>En esta pantalla también puedes activar o desactivar la visualización del icono de configuración (la llave inglesa). Por defecto está activado y se muestra en la esquina superior izquierda de la pantalla principal. Si lo desactivas, el icono desaparecerá pero la funcionalidad permanecerá en el mismo lugar: para acceder a la configuración, bastará con hacer una pulsación prolongada de más de 2 segundos en esa zona. Esta opción es especialmente útil para evitar que usuarios con dificultades cognitivas accedan accidentalmente a la configuración y salgan de la pantalla principal.</p>
+                        <p>En esta pantalla también puedes activar o desactivar la visualización del icono de configuración (la llave inglesa). Por defecto está activado y se muestra en la esquina superior izquierda de la pantalla principal. Si lo desactivas, el icono desaparecerá pero la funcionalidad permanecerá en el mismo lugar: para acceder a la configuración, bastará con hacer una pulsación prolongada de más de dos segundos en la misma zona que se visualiza inicialmente (a veces la primera foto se superpone a esa zona y la pulsación debe incluir la esquina superior izquierda de la foto). Esta opción es especialmente útil para evitar que usuarios con dificultades cognitivas accedan accidentalmente a la configuración y salgan de la pantalla principal.</p>
                     </div>
                 </div>
 
@@ -558,28 +663,34 @@
                     <img src="images/screenshot-contacts-list.png" alt="Paso 4">
                     <div class="config-step-content">
                         <h3>4. Añade contactos</h3>
-                        <p>Pulsa "Añadir contacto" y selecciona los contactos de tu agenda. EasyCall utilizará la foto del contacto y su primer número de teléfono. Al terminar de configurar, guarda la configuración, y volverás a la página principal de EasyCall.</p>
+                        <p>Pulsa "Añadir contacto" y selecciona los contactos de tu agenda. EasyCall utilizará la foto del contacto y su primer número de teléfono. Al pulsar sobre el nombre del contacto puedes seleccionar otro contacto para esa posición. A la izquierda del número de posición del contacto hay un icono que al mantenerlo pulsado permite cambiar ese contacto a otra posición en la lista mediante drag&drop. Al terminar de configurar, guarda la configuración, y volverás a la página principal de EasyCall.</p>
                     </div>
                 </div>
 
-                <div style="background: white; padding: 30px; border-radius: 10px; margin-top: 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                    <h3 style="color: #2196F3; margin-bottom: 15px;">📱 Modo Teléfono Fijo (Launcher)</h3>
-                    <p>
-                        EasyCall puede configurarse como launcher (aplicación de inicio) del teléfono. Además, la pantalla permanece siempre encendida mientras la aplicación está abierta.
-                    </p>
-                    <p>
-                        Esto permite dejar el teléfono enchufado permanentemente sobre una mesa, con la pantalla activa y listo para llamar en cualquier momento con un solo toque, <strong>como si fuera un teléfono fijo</strong>.
-                    </p>
+                <div class="landline-box">
+                    <div class="landline-box-content">
+                        <h3>📱 Modo Teléfono Fijo (Launcher)</h3>
+                        <p>
+                            EasyCall puede configurarse como launcher (aplicación de inicio) del teléfono. Además, la pantalla permanece siempre encendida mientras la aplicación está abierta.
+                        </p>
+                        <p>
+                            Esto permite dejar el teléfono enchufado permanentemente sobre una mesa, con la pantalla activa y listo para llamar en cualquier momento con un solo toque, <strong>como si fuera un teléfono fijo</strong>.
+                        </p>
+                    </div>
+                    <img src="images/easycall-landline-mode.jpg" alt="Modo teléfono fijo">
                 </div>
 
                 <div class="other-features">
-                    <h3>Otras funcionalidades:</h3>
-                    <p>
-                        Una vez que estén configurados algunos contactos, el icono de acceso a la configuración, una llave inglesa, se presentará en la esquina superior izquierda de la pantalla. Pero en la pantalla de configuración se puede desactivar la presentación de este icono. En realidad la funcionalidad de acceso a la configuración sigue en el mismo sitio pero no es visible y para acceder hay que hacer una pulsación de más de 2 segundos en la esquina superior izquierda.
-                    </p>
-                    <p>
-                        En algunos modelos de móvil, para que se active automáticamente la funcionalidad de manos libres será necesario dar Permitir Ajustes Restringidos a la aplicación EasyCall. Se configura en Ajustes/Aplicaciones/EasyCall, pero esto puede variar según cada modelo de smartphone.
-                    </p>
+                    <div class="other-features-content">
+                        <h3>Otras funcionalidades:</h3>
+                        <p>
+                            Una vez que estén configurados algunos contactos, el icono de acceso a la configuración, una llave inglesa, se presentará en la esquina superior izquierda de la pantalla. Pero en la pantalla de configuración se puede desactivar la presentación de este icono. En realidad la funcionalidad de acceso a la configuración sigue en el mismo sitio pero no es visible y para acceder hay que hacer una pulsación de más de dos segundos en la misma zona que se visualiza inicialmente (a veces la primera foto se superpone a esa zona y la pulsación debe incluir la esquina superior izquierda de la foto).
+                        </p>
+                        <p>
+                            En algunos modelos de móvil, para que se active automáticamente la funcionalidad de manos libres será necesario dar Permitir Ajustes Restringidos a la aplicación EasyCall. Se configura en Ajustes/Aplicaciones/EasyCall, pero esto puede variar según cada modelo de smartphone.
+                        </p>
+                    </div>
+                    <img src="images/screenshot-config-icon-hidden.jpg" alt="Icono de configuración oculto">
                 </div>
             </div>
         </div>
@@ -608,7 +719,7 @@
                 <div class="faq-item">
                     <div class="faq-question">¿Funciona el manos libres automático en todos los móviles?</div>
                     <div class="faq-answer">
-                        La función de activación automática del manos libres no funciona en todos los modelos de teléfono, ya que depende de cada fabricante. En algunos casos se soluciona dando permisos de accesibilidad a la aplicación, pero en otros casos el fabricante no permite activar automáticamente el altavoz.
+                        La función de activación automática del manos libres no funciona en todos los modelos de teléfono, ya que depende de cada fabricante. En algunos casos se soluciona dando permisos de accesibilidad a la aplicación, pero en otros casos el fabricante no permite activar automáticamente el manos libres.
                     </div>
                 </div>
 
@@ -658,6 +769,13 @@
                     <div class="faq-question">¿Qué pasa si una vez configurado un contacto lo borro de mi agenda de contactos?</div>
                     <div class="faq-answer">
                         Si borras un contacto de tu agenda, los datos en EasyCall de ese contacto permanecerán. Si quieres eliminarlo también de EasyCall deberás volver a acceder a la configuración de EasyCall para eliminar ese contacto de la aplicación o reemplazarlo por otro.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">¿He desactivado la visualización de la herramienta de configuración y no puedo volver a acceder a la configuración?</div>
+                    <div class="faq-answer">
+                        El acceso a la configuración sigue en la misma posición aunque no sea visible, pero ahora para acceder debes pulsar durante más de dos segundos en esa zona. A veces la primera foto de la pantalla se superpone a la zona de acceso a la configuración y la pulsación debe incluir la esquina superior izquierda de la foto.
                     </div>
                 </div>
             </div>
