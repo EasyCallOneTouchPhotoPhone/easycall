@@ -87,18 +87,25 @@
             gap: 40px;
         }
 
+        .hero-title-section {
+            text-align: center;
+            width: 100%;
+        }
+
         .hero-main {
             display: flex;
             gap: 60px;
             align-items: center;
             justify-content: center;
             flex-wrap: wrap;
+            width: 100%;
         }
 
         .hero-text {
             flex: 1;
             min-width: 300px;
             max-width: 600px;
+            text-align: left;
         }
 
         .hero-image-container {
@@ -123,6 +130,7 @@
             font-size: 2.5em;
             margin-bottom: 20px;
             line-height: 1.2;
+            white-space: nowrap;
         }
 
         .hero-tagline {
@@ -428,6 +436,7 @@
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 1.8em;
+                white-space: normal;
             }
 
             .hero-tagline {
@@ -522,9 +531,12 @@
             <div class="hero-content">
                 <img src="images/logo.png" alt="EasyCall Logo" class="hero-logo">
                 
+                <div class="hero-title-section">
+                    <h1>EasyCall - OneTouch Photo Phone</h1>
+                </div>
+                
                 <div class="hero-main">
                     <div class="hero-text">
-                        <h1>EasyCall - OneTouch Photo Phone</h1>
                         <p class="hero-tagline">
                             <strong>EasyCall convierte cualquier smartphone en un dispositivo accesible</strong>
                         </p>
